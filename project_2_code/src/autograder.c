@@ -1,3 +1,7 @@
+/*
+* Created by Erik Sarkinen, Anders Cameron, and LJ
+*/
+
 #include "utils.h"
 
 // Batch size is determined at runtime now
