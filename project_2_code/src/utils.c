@@ -86,8 +86,26 @@ char **get_student_executables(char *solution_dir, int *num_executables) {
 
 
 // TODO: Implement this function
+////////////////Erik S. implemented this function on 3/9/24//////////////////////////
 int get_batch_size() {
-    return 8;
+    char string[256];
+    int processor_count = 0;
+    FILE *file_pointer;
+    size_t n = 9;
+
+    if((file_pointer = fopen("/proc/cpuinfo", "r")))
+    {
+        while(fgets(string, sizeof string, file_pointer))
+            if(!memcmp(string, "processor", n))
+            processor_count++;
+    }
+    if (!processor_count) 
+    { 
+        printf("Unable to get processor count. Default to -1");
+        processor_count = -1;
+    }
+    printf("Processor count = %d\n", processor_count);
+    return processor_count;
 }
 
 
